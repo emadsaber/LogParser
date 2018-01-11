@@ -39,24 +39,34 @@ namespace ESH.Log.ParserEngine.Shared
             return res;
         }
 
-        public static List<ValidationError> GetAllErrors()
+        public static IEnumerable<ValidationError> GetAllErrors(bool RemoveAfterRead)
         {
+            if (RemoveAfterRead)
+            {
+                while (_stack != null && _stack.Count != 0)
+                {
+                    yield return _stack.Pop();
+                }
+            }
             foreach (var item in _stack)
             {
-                item.IsNew = false;
+                yield return item;
             }
-            return _stack.Select(x => x).ToList();
         }
 
-        public static List<ValidationError> GetNewErrors()
+        public static IEnumerable<ValidationError> GetNewErrors(bool RemoveAfterRead)
         {
-            try
+            if (RemoveAfterRead)
             {
-                return _stack.Where(x => x.IsNew == true).ToList();
+                while (_stack != null && _stack.Count != 0 && _stack.Peek().IsNew == true)
+                {
+                    yield return _stack.Pop();
+                }
             }
-            catch (Exception ex)
+            var newErrors = _stack.Where(x => x.IsNew == true);
+            foreach (var item in newErrors)
             {
-                throw;
+                yield return item;
             }
         }
 
