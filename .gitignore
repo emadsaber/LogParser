@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ESH.Log.Parser.Resources/bin/Debug
+/.vs/LogParser/v14
+/ESH.Log.Parser.Resources/obj/Debug
+/ESH.Log.ParserEngine/bin/Debug
+/ESH.Log.ParserEngine/obj/Debug
+/LogParser/bin/Debug
+/LogParser/obj/Debug
