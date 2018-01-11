@@ -28,7 +28,7 @@ namespace ESH.Log.ParserEngine.Services
         #endregion
 
         #region logic
-        public List<PlainLine> Read()
+        public List<PlainLine> Read(int? pageSize, int? pageIndex)
         {
             List<ValidationError> errors = null;
             //validate target
@@ -41,9 +41,22 @@ namespace ESH.Log.ParserEngine.Services
             FileStream fs = new FileStream(Target.FileName, FileMode.Open);
             StreamReader sr = new StreamReader(fs);
             List<PlainLine> lines = new List<PlainLine>();
+            int lineIndex = 0;
             while (!sr.EndOfStream)
             {
-                lines.Add(new PlainLine(sr.ReadLine()));
+                if (pageSize.HasValue && pageIndex.HasValue)
+                {
+                    if (lineIndex >= (pageSize.Value * pageIndex.Value) &&
+                        lineIndex < pageSize.Value + (pageSize.Value * pageIndex.Value))
+                    {
+                        lines.Add(new PlainLine(sr.ReadLine()));
+                    }
+                }
+                else
+                {
+                    lines.Add(new PlainLine(sr.ReadLine()));
+                }
+                lineIndex++;
             }
             return lines;
         } 

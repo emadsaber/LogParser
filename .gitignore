@@ -11,3 +11,10 @@
 /LogParser/obj/Debug
 /Tests/ESH.Log.Parser.Engine.Tests/obj/Debug
 /Tests/ESH.Log.Parser.Engine.Tests/bin/Debug
+/.vs
+/.vs
+/.vs/LogParser/v15
+/ESH.Log.Parser.Resources/obj/Release
+/ESH.Log.ParserEngine/obj/Release
+/LogParser/obj/Release
+/Tests/ESH.Log.Parser.Engine.Tests/obj/Release
