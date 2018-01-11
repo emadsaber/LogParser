@@ -9,3 +9,5 @@
 /ESH.Log.ParserEngine/obj/Debug
 /LogParser/bin/Debug
 /LogParser/obj/Debug
+/Tests/ESH.Log.Parser.Engine.Tests/obj/Debug
+/Tests/ESH.Log.Parser.Engine.Tests/bin/Debug

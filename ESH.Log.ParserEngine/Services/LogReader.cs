@@ -27,10 +27,12 @@ namespace ESH.Log.ParserEngine.Services
 
         #endregion
 
+        #region logic
         public List<PlainLine> Read()
         {
+            List<ValidationError> errors = null;
             //validate target
-            if (!new ReaderValidator().Validate(Target, out List<ValidationError> errors))
+            if (!new ReaderValidator().Validate(Target, out errors))
             {
                 if (errors != null && errors.Count > 0) ErrorsStack.AddErrors(errors);
                 return null;
@@ -44,6 +46,7 @@ namespace ESH.Log.ParserEngine.Services
                 lines.Add(new PlainLine(sr.ReadLine()));
             }
             return lines;
-        }
+        } 
+        #endregion
     }
 }

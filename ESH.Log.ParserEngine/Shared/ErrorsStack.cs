@@ -19,6 +19,7 @@ namespace ESH.Log.ParserEngine.Shared
         {
             try
             {
+                error.IsNew = true;
                 _stack.Push(error);
                 return true;
             }
@@ -40,7 +41,29 @@ namespace ESH.Log.ParserEngine.Shared
 
         public static List<ValidationError> GetAllErrors()
         {
+            foreach (var item in _stack)
+            {
+                item.IsNew = false;
+            }
             return _stack.Select(x => x).ToList();
+        }
+
+        public static List<ValidationError> GetNewErrors()
+        {
+            try
+            {
+                return _stack.Where(x => x.IsNew == true).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public static ValidationError GetLastError()
+        {
+            if (_stack == null || _stack.Count == 0) return null;
+            return _stack.Pop();
         }
     }
 }
