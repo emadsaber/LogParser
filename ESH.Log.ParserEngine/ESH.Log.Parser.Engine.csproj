@@ -7,8 +7,8 @@
     <ProjectGuid>{3A676B23-6A32-4A6A-B2F9-CB32CCFEE32E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ESH.Log.ParserEngine</RootNamespace>
-    <AssemblyName>ESH.Log.ParserEngine</AssemblyName>
+    <RootNamespace>ESH.Log.Parser.Engine</RootNamespace>
+    <AssemblyName>ESH.Log.Parser.Engine</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -53,11 +53,11 @@
     <Compile Include="Services\LogParser.cs" />
     <Compile Include="Services\LogReader.cs" />
     <Compile Include="Services\LogWriter.cs" />
-    <Compile Include="Services\Support\FilterObject.cs" />
-    <Compile Include="Services\Support\ParserObject.cs" />
-    <Compile Include="Services\Support\PlainMessage.cs" />
-    <Compile Include="Services\Support\ReaderObject.cs" />
-    <Compile Include="Services\Support\WriterObject.cs" />
+    <Compile Include="Services\Support\Filter\FilterObject.cs" />
+    <Compile Include="Services\Support\Parser\ParserObject.cs" />
+    <Compile Include="Services\Support\Reader\PlainMessage.cs" />
+    <Compile Include="Services\Support\Reader\ReaderObject.cs" />
+    <Compile Include="Services\Support\Writer\WriterObject.cs" />
     <Compile Include="Shared\Enums.cs" />
     <Compile Include="Shared\ErrorsStack.cs" />
     <Compile Include="Validations\ReaderValidator.cs" />

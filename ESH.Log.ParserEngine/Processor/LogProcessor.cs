@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESH.Log.ParserEngine.Processor
+namespace ESH.Log.Parser.Engine.Processor
 {
     public class LogProcessor
     {

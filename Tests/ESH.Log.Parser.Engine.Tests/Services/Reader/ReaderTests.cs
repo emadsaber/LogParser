@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ESH.Log.ParserEngine.Services;
 using ESH.Log.Parser.Engine.Tests.Moqs;
 using System.Diagnostics;
+using ESH.Log.Parser.Engine.Services;
 
 namespace ESH.Log.Parser.Engine.Tests.Services.Reader
 {

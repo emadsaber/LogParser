@@ -1,11 +1,11 @@
-﻿using ESH.Log.ParserEngine.Contracts;
+﻿using ESH.Log.Parser.Engine.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESH.Log.ParserEngine.Services.Support
+namespace ESH.Log.Parser.Engine.Services.Reader.Support
 {
     public class ReaderObject:IValidationTarget
     {

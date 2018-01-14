@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESH.Log.ParserEngine.Services.Support
+namespace ESH.Log.Parser.Engine.Services.Filter.Support
 {
-    class WriterObject
+    class FilterObject
     {
     }
 }

@@ -1,11 +1,11 @@
-﻿using ESH.Log.ParserEngine.Shared;
+﻿using ESH.Log.Parser.Engine.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESH.Log.ParserEngine.Contracts
+namespace ESH.Log.Parser.Engine.Contracts
 {
     public interface ILogItem
     {

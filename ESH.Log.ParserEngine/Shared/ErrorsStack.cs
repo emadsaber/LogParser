@@ -1,11 +1,11 @@
-﻿using ESH.Log.ParserEngine.Validations.Support;
+﻿using ESH.Log.Parser.Engine.Validations.Support;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESH.Log.ParserEngine.Shared
+namespace ESH.Log.Parser.Engine.Shared
 {
     public static class ErrorsStack
     {

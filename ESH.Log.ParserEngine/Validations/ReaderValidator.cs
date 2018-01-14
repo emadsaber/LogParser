@@ -1,15 +1,15 @@
-﻿using ESH.Log.ParserEngine.Contracts;
+﻿using ESH.Log.Parser.Engine.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ESH.Log.ParserEngine.Validations.Support;
+using ESH.Log.Parser.Engine.Validations.Support;
 using ESH.Log.Parser.Resources;
 using System.IO;
-using ESH.Log.ParserEngine.Services.Support;
+using ESH.Log.Parser.Engine.Services.Reader.Support;
 
-namespace ESH.Log.ParserEngine.Validations
+namespace ESH.Log.Parser.Engine.Validations
 {
     public class ReaderValidator : IValidator
     {

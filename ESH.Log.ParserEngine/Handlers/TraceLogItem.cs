@@ -1,12 +1,12 @@
-﻿using ESH.Log.ParserEngine.Contracts;
+﻿using ESH.Log.Parser.Engine.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ESH.Log.ParserEngine.Shared;
+using ESH.Log.Parser.Engine.Shared;
 
-namespace ESH.Log.ParserEngine.Handlers
+namespace ESH.Log.Parser.Engine.Handlers
 {
     public class TraceLogItem : ILogItem
     {

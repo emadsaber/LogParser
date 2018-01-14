@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESH.Log.ParserEngine.Validations.Support
+namespace ESH.Log.Parser.Engine.Validations.Support
 {
     public class ValidationError
     {

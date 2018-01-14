@@ -1,4 +1,4 @@
-﻿using ESH.Log.ParserEngine.Services.Support;
+﻿using ESH.Log.Parser.Engine.Services.Reader.Support;
 using System;
 using System.Collections.Generic;
 using System.Linq;

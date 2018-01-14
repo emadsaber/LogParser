@@ -1,7 +1,7 @@
-﻿using ESH.Log.ParserEngine.Services.Support;
-using ESH.Log.ParserEngine.Shared;
-using ESH.Log.ParserEngine.Validations;
-using ESH.Log.ParserEngine.Validations.Support;
+﻿using ESH.Log.Parser.Engine.Services.Reader.Support;
+using ESH.Log.Parser.Engine.Shared;
+using ESH.Log.Parser.Engine.Validations;
+using ESH.Log.Parser.Engine.Validations.Support;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ESH.Log.ParserEngine.Services
+namespace ESH.Log.Parser.Engine.Services
 {
     public class LogReader
     {
