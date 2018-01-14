@@ -13,5 +13,10 @@ namespace ESH.Log.ParserEngine.Services.Support
         {
             this.Line = line;
         }
+
+        public override string ToString()
+        {
+            return this.Line;
+        }
     }
 }

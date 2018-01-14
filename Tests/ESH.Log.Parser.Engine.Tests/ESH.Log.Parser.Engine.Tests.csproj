@@ -50,8 +50,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Moqs\ReaderMoqs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Reader\ReaderTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ESH.Log.Parser.Resources\ESH.Log.Parser.Resources.csproj">
+      <Project>{9128b4a7-efb3-4e4e-b3a4-66c3fe5430db}</Project>
+      <Name>ESH.Log.Parser.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ESH.Log.ParserEngine\ESH.Log.Parser.Engine.csproj">
+      <Project>{3a676b23-6a32-4a6a-b2f9-cb32ccfee32e}</Project>
+      <Name>ESH.Log.Parser.Engine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
