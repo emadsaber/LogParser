@@ -13,4 +13,10 @@ namespace ESH.Log.Parser.Engine.Shared
         Warning = 2,
         Error = 3
     }
+    public enum FieldType
+    {
+        Text = 100,
+        Date = 200, 
+        LogType = 300,
+    }
 }

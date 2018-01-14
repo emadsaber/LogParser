@@ -77,5 +77,23 @@ namespace ESH.Log.Parser.Resources {
                 return ResourceManager.GetString("ERR_Log_File_Not_Exist", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Line format is invalid to be parsed.
+        /// </summary>
+        public static string ERR_Parser_Invalid_Format {
+            get {
+                return ResourceManager.GetString("ERR_Parser_Invalid_Format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target of parsing is either null or invalid.
+        /// </summary>
+        public static string ERR_Parser_Invalid_Parsing_Target {
+            get {
+                return ResourceManager.GetString("ERR_Parser_Invalid_Parsing_Target", resourceCulture);
+            }
+        }
     }
 }

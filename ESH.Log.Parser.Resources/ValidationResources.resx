@@ -123,4 +123,10 @@
   <data name="ERR_Log_File_Not_Exist" xml:space="preserve">
     <value>The required log file does not exist in the path you specified</value>
   </data>
+  <data name="ERR_Parser_Invalid_Format" xml:space="preserve">
+    <value>Line format is invalid to be parsed</value>
+  </data>
+  <data name="ERR_Parser_Invalid_Parsing_Target" xml:space="preserve">
+    <value>Target of parsing is either null or invalid</value>
+  </data>
 </root>

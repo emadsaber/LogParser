@@ -13,7 +13,7 @@ namespace ESH.Log.Parser.Engine.Validations
 {
     public class ReaderValidator : IValidator
     {
-        public string ModuleName { get; } = "ReaderValidator";
+        public string ModuleName => "ReaderModule";
 
         public bool Validate(IValidationTarget target, out List<ValidationError> errors)
         {
