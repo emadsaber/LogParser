@@ -61,6 +61,15 @@ namespace ESH.Log.Parser.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid filter date range.
+        /// </summary>
+        public static string ERR_Filter_Invalid_Date_Range {
+            get {
+                return ResourceManager.GetString("ERR_Filter_Invalid_Date_Range", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Validation Target.
         /// </summary>
         public static string ERR_Invalid_Target {

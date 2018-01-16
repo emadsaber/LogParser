@@ -53,6 +53,7 @@
     <Compile Include="Services\LogParser.cs" />
     <Compile Include="Services\LogReader.cs" />
     <Compile Include="Services\LogWriter.cs" />
+    <Compile Include="Services\Support\Filter\DateRange.cs" />
     <Compile Include="Services\Support\Filter\FilterObject.cs" />
     <Compile Include="Services\Support\Parser\Message.cs" />
     <Compile Include="Services\Support\Parser\ParserObject.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Services\Support\Writer\WriterObject.cs" />
     <Compile Include="Shared\Enums.cs" />
     <Compile Include="Shared\ErrorsStack.cs" />
+    <Compile Include="Validations\FilterValidator.cs" />
     <Compile Include="Validations\ParserValidator.cs" />
     <Compile Include="Validations\ReaderValidator.cs" />
     <Compile Include="Validations\Support\ValidationError.cs" />
