@@ -13,6 +13,7 @@ namespace ESH.Log.Parser.Engine.Tests.Moqs
     {
         #region properties
         public static string CurrentFormat => "dd.MM.yyyy HH:mm:ss";
+
         #region Messages
         private static List<Message> Messages => new List<Message>()
             {
