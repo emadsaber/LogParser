@@ -120,6 +120,9 @@
   <data name="ERR_Filter_Invalid_Date_Range" xml:space="preserve">
     <value>Invalid filter date range</value>
   </data>
+  <data name="ERR_Filter_Invalid_Source_Messages" xml:space="preserve">
+    <value>Invalid filter source messages</value>
+  </data>
   <data name="ERR_Invalid_Target" xml:space="preserve">
     <value>Invalid Validation Target</value>
   </data>

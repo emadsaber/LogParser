@@ -29,6 +29,11 @@ namespace ESH.Log.Parser.Engine.Validations
                 errors.Add(new ValidationError() { ErrorMessage = ValidationResources.ERR_Invalid_Target, SourceModule = this.ModuleName, TimeStamp = DateTime.Now });
                 return false;
             }
+            if (filterTarget.Messages == null)
+            {
+                errors.Add(new ValidationError() { ErrorMessage = ValidationResources.ERR_Filter_Invalid_Source_Messages, SourceModule = this.ModuleName, TimeStamp = DateTime.Now });
+                return false;
+            }
             if (filterTarget.SelectedRange != null)
             {
                 if (filterTarget.SelectedRange.From == default(DateTime) || filterTarget.SelectedRange.To == default(DateTime))

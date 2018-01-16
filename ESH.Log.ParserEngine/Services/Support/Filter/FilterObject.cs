@@ -1,4 +1,5 @@
 ﻿using ESH.Log.Parser.Engine.Contracts;
+using ESH.Log.Parser.Engine.Services.Support.Parser;
 using ESH.Log.Parser.Engine.Shared;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace ESH.Log.Parser.Engine.Services.Support.Filter
     {
         #region properties
 
+        public List<Message> Messages { get; set; }
         public List<DateTime> SelectedTimeStamps { get; set; }
         public List<LogType> SelectedTypes { get; set; }
         public DateRange SelectedRange { get; set; }

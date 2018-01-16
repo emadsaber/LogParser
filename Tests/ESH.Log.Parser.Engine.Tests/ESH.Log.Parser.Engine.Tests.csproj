@@ -64,6 +64,10 @@
       <Name>ESH.Log.Parser.Engine</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\Filter\" />
+    <Folder Include="Services\Parser\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

@@ -70,6 +70,15 @@ namespace ESH.Log.Parser.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid filter source messages.
+        /// </summary>
+        public static string ERR_Filter_Invalid_Source_Messages {
+            get {
+                return ResourceManager.GetString("ERR_Filter_Invalid_Source_Messages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Validation Target.
         /// </summary>
         public static string ERR_Invalid_Target {

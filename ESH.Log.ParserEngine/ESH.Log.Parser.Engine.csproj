@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\ILogItem.cs" />
+    <Compile Include="Contracts\IService.cs" />
     <Compile Include="Contracts\IValidationTarget.cs" />
     <Compile Include="Contracts\IValidator.cs" />
     <Compile Include="Handlers\ErrorLogItem.cs" />
