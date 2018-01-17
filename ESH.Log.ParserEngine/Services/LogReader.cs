@@ -1,4 +1,5 @@
-﻿using ESH.Log.Parser.Engine.Services.Reader.Support;
+﻿using ESH.Log.Parser.Engine.Contracts;
+using ESH.Log.Parser.Engine.Services.Reader.Support;
 using ESH.Log.Parser.Engine.Shared;
 using ESH.Log.Parser.Engine.Validations;
 using ESH.Log.Parser.Engine.Validations.Support;
@@ -11,10 +12,10 @@ using System.Threading.Tasks;
 
 namespace ESH.Log.Parser.Engine.Services
 {
-    public class LogReader
+    public class LogReader : IService
     {
         #region properties
-        public ReaderObject Target { get; set; }
+        public IValidationTarget Target { get; set; }
 
         #endregion
 
@@ -37,17 +38,18 @@ namespace ESH.Log.Parser.Engine.Services
                 if (errors != null && errors.Count > 0) ErrorsStack.AddErrors(errors);
                 return null;
             }
+            var target = this.Target as ReaderObject;
             //process target
-            FileStream fs = new FileStream(Target.FileName, FileMode.Open);
+            FileStream fs = new FileStream(target.FileName, FileMode.Open);
             StreamReader sr = new StreamReader(fs);
             List<PlainLine> lines = new List<PlainLine>();
             int lineIndex = 0;
             while (!sr.EndOfStream)
             {
-                if (Target.PageSize.HasValue && Target.PageIndex.HasValue)
+                if (target.PageSize.HasValue && target.PageIndex.HasValue)
                 {
-                    if (lineIndex >= (Target.PageSize.Value * Target.PageIndex.Value) &&
-                        lineIndex < Target.PageSize.Value + (Target.PageSize.Value * Target.PageIndex.Value))
+                    if (lineIndex >= (target.PageSize.Value * target.PageIndex.Value) &&
+                        lineIndex < target.PageSize.Value + (target.PageSize.Value * target.PageIndex.Value))
                     {
                         lines.Add(new PlainLine(sr.ReadLine()));
                     }
@@ -55,7 +57,7 @@ namespace ESH.Log.Parser.Engine.Services
                     {
                         var dump = sr.ReadLine(); // to skip this line
                     }
-                    if (lines.Count == Target.PageSize.Value) break;
+                    if (lines.Count == target.PageSize.Value) break;
                 }
                 else
                 {
