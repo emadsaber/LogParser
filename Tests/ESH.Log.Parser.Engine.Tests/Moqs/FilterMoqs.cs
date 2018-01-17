@@ -15,7 +15,7 @@ namespace ESH.Log.Parser.Engine.Tests.Moqs
         public static string CurrentFormat => "dd.MM.yyyy HH:mm:ss";
 
         #region Messages
-        private static List<Message> Messages => new List<Message>()
+        public static List<Message> Messages => new List<Message>()
             {
                 new Message { TimeStamp = DateTime.ParseExact("23.11.2017 07:11:54",CurrentFormat, null), Type = LogType.Trace, MessageBuilder = new StringBuilder().Append("Broker..cctor ... ServiceBroker ...") },
                 new Message { TimeStamp = DateTime.ParseExact("23.11.2017 07:11:54",CurrentFormat, null), Type = LogType.Info, MessageBuilder = new StringBuilder().Append("Broker..cctor ... ServiceBroker ... loading basic configuration handler ...") },
