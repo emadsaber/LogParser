@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ESH.Log.Parser.Engine.Validations.Support;
 using ESH.Log.Parser.Engine.Services.Support.Parser;
+using ESH.Log.Parser.Resources;
 
 namespace ESH.Log.Parser.Engine.Services.Parser.Support
 {
@@ -14,16 +15,8 @@ namespace ESH.Log.Parser.Engine.Services.Parser.Support
     {
         #region properties
         public List<PlainLine> PlainLines { get; set; }
-        #endregion
-
-        #region nested
-        public static class MessageFormat
-        {
-            public static string Format { get; set; }
-            public static bool IsIncludingTimeStamp { get; set; }
-            public static string TimeStampFormat { get; set; }
-            public static bool IsIncludingType { get; set; }
-        }
+        public MessageFormat Format { get; set; }
+        
         #endregion
     }
 }

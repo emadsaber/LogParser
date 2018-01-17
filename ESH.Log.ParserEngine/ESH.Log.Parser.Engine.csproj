@@ -55,6 +55,7 @@
     <Compile Include="Services\LogWriter.cs" />
     <Compile Include="Services\Support\Filter\FilterObject.cs" />
     <Compile Include="Services\Support\Parser\Message.cs" />
+    <Compile Include="Services\Support\Parser\MessageFormat.cs" />
     <Compile Include="Services\Support\Parser\ParserObject.cs" />
     <Compile Include="Services\Support\Reader\PlainMessage.cs" />
     <Compile Include="Services\Support\Reader\ReaderObject.cs" />

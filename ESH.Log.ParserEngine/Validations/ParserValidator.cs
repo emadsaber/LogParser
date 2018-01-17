@@ -29,9 +29,13 @@ namespace ESH.Log.Parser.Engine.Validations
                 errors.Add(new ValidationError() { ErrorMessage = ValidationResources.ERR_Invalid_Target, SourceModule = this.ModuleName, TimeStamp = DateTime.Now });
                 return false;
             }
-
-            if (string.IsNullOrEmpty(ParserObject.MessageFormat.Format) || 
-                (ParserObject.MessageFormat.IsIncludingTimeStamp && string.IsNullOrEmpty(ParserObject.MessageFormat.TimeStampFormat)))
+            if(parserTarget.Format == null)
+            {
+                errors.Add(new ValidationError() { ErrorMessage = ValidationResources.ERR_Parser_Invalid_Format, SourceModule = this.ModuleName, TimeStamp = DateTime.Now });
+                return false;
+            }
+            if (string.IsNullOrEmpty(parserTarget.Format.FullFormat) || 
+                (parserTarget.Format.IsIncludingTimeStamp && string.IsNullOrEmpty(parserTarget.Format.TimeStampFormat)))
             {
                 errors.Add(new ValidationError() { ErrorMessage = ValidationResources.ERR_Parser_Invalid_Format, SourceModule = this.ModuleName, TimeStamp = DateTime.Now });
                 return false;
