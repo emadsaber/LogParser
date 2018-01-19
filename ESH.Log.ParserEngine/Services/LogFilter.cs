@@ -56,7 +56,8 @@ namespace ESH.Log.Parser.Engine.Services
             }
             if (target.SelectedTimeStamps != null && target.SelectedTimeStamps.Count > 0)
             {
-                messagesFiltered = messagesFiltered.Where(x => x.TimeStamp.HasValue ? target.SelectedTimeStamps.Contains(x.TimeStamp.Value) : false).ToList();
+                var dateStamps = target.SelectedTimeStamps.Select(x => x.Date);
+                messagesFiltered = messagesFiltered.Where(x => x.TimeStamp.HasValue ? dateStamps.Contains(x.TimeStamp.Value.Date) : false).ToList();
             }
             if (target.SelectedRange != null)
             {

@@ -73,7 +73,7 @@ namespace ESH.Log.Parser.Engine.Tests.Moqs
         public static FilterObject FilterObject_Errors_Info_Moq = new FilterObject() { Messages = Messages, SelectedTypes = new List<LogType>() { LogType.Error, LogType.Info }, };
         public static FilterObject FilterObject_Errors_Info_Trace_Moq = new FilterObject() { Messages = Messages, SelectedTypes = new List<LogType>() { LogType.Error, LogType.Info, LogType.Trace }, };
         public static FilterObject FilterObject_Errors_Info_Warning_Moq = new FilterObject() { Messages = Messages, SelectedTypes = new List<LogType>() { LogType.Error, LogType.Info, LogType.Warning }, };
-        public static FilterObject FilterObject_SelectedDates_Moq = new FilterObject() { Messages = Messages, SelectedTimeStamps = new List<DateTime>() { DateTime.ParseExact("23.11.2017 00:00:00", CurrentFormat, null), DateTime.ParseExact("15.01.2018 00:00:00", CurrentFormat, null) } };
+        public static FilterObject FilterObject_SelectedDates_Moq = new FilterObject() { Messages = Messages, SelectedTimeStamps = new List<DateTime>() { DateTime.ParseExact("15.01.2018 00:00:00", CurrentFormat, null) } };
         public static FilterObject FilterObject_SelectedRange_Moq = new FilterObject() { Messages = Messages, SelectedRange = new DateRange() { From = DateTime.ParseExact("23.11.2017 00:00:00", CurrentFormat, null), To = DateTime.ParseExact("28.11.2017 00:00:00", CurrentFormat, null) } };
         public static FilterObject FilterObject_MessageCriteria_Broker_Moq = new FilterObject() { Messages = Messages, MessageCriteria = "Broker" };
         public static FilterObject FilterObject_MessageCriteria_Exception_Moq = new FilterObject() { Messages = Messages, MessageCriteria = "Exception" };

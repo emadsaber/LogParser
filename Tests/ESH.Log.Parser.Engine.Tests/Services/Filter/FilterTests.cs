@@ -4,6 +4,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ESH.Log.Parser.Engine.Services.Support.Filter;
 using ESH.Log.Parser.Engine.Services;
 using ESH.Log.Parser.Engine.Tests.Moqs;
+using System.Text;
+using ESH.Log.Parser.Engine.Services.Support.Parser;
 
 namespace ESH.Log.Parser.Engine.Tests.Services.Filter
 {
@@ -98,26 +100,32 @@ namespace ESH.Log.Parser.Engine.Tests.Services.Filter
         }
         [TestMethod] public void Test_SelectedDates()
         {
-            //filter.Target = FilterMoqs.FilterObject_SelectedDates_Moq;
-            //var filteredActual = filter.Filter();
-            //var filteredExpected = FilterMoqs.Messages.Where(x => x.Da.ToList();
-            //Assert.AreEqual(filteredExpected.Count, filteredActual.Count);
-            //foreach (var item in filteredActual)
-            //{
-            //    Assert.IsTrue(filteredExpected.Any(x => x.TextMessage == item.TextMessage));
-            //}
+            filter.Target = FilterMoqs.FilterObject_SelectedDates_Moq;
+            var filteredActual = filter.Filter();
+            var filteredExpected = "AttendanceHandler.GetScheduleEventCurrentlyIn ... ";
+            Assert.AreEqual(1, filteredActual.Count);
+            foreach (var item in filteredActual)
+            {
+                Assert.IsTrue(filteredExpected == item.TextMessage);
+            }
         }
         [TestMethod] public void Test_SelectedRange()
         {
-
+            filter.Target = FilterMoqs.FilterObject_SelectedRange_Moq;
+            var filteredActual = filter.Filter();
+            Assert.AreEqual(18, filteredActual.Count);
         }
         [TestMethod] public void Test_MessageCriteria_Broker()
         {
-
+            filter.Target = FilterMoqs.FilterObject_MessageCriteria_Broker_Moq;
+            var filteredActual = filter.Filter();
+            Assert.AreEqual(5, filteredActual.Count);
         }
         [TestMethod] public void Test_MessageCriteria_Exception()
         {
-
+            filter.Target = FilterMoqs.FilterObject_MessageCriteria_Exception_Moq;
+            var filteredActual = filter.Filter();
+            Assert.AreEqual(2, filteredActual.Count);
         }
     }
 }
