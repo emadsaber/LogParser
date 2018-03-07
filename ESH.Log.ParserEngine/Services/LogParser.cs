@@ -40,20 +40,25 @@ namespace ESH.Log.Parser.Engine.Services
                 if (errors != null && errors.Count > 0) ErrorsStack.AddErrors(errors);
                 return null;
             }
+
             var format = Target.Format.FullFormat;
-            var portions = Regex.Matches(format, @"\[[A-Z][a-z]*\]");
+            var portions = Regex.Matches(format, @"\[[A-Z][a-z]*\]").Cast<string>().ToArray();
             var message = new Message();
             var messages = new List<Message>();
             bool isMessageSpanning = false;
             //parse messages
-            foreach (var line in Target.PlainLines)
+            for (int lineIndex = 0; lineIndex < Target.PlainLines.Count; lineIndex++)
             {
                 if (!isMessageSpanning)
                 {
                     message = new Message();
-                    if (format.Contains(AppResources.Parser_Format_Type)) { message.Type = GetMessageType(line); }
-                    if (format.Contains(AppResources.Parser_Format_Stamp)) { message.TimeStamp = GetTimeStamp(line); }
-                    if (format.Contains(AppResources.Parser_Format_Message)) { message.MessageBuilder = GetMessageBuilder(line, out isMessageSpanning); }
+                    for (int portionIndex = 0; portionIndex < portions.Length; portionIndex++)
+                    {
+                        isMessageSpanning = IsCurrentMessageSpanning(lineIndex, out string[] spanningLines);
+                        if (portions[portionIndex] == AppResources.Parser_Format_Stamp) { message.TimeStamp = GetTimeStamp(Target.PlainLines[lineIndex], portionIndex); }
+                        if (portions[portionIndex] == AppResources.Parser_Format_Type) { message.Type = GetMessageType(Target.PlainLines[lineIndex], portionIndex); }
+                        if (portions[portionIndex] == AppResources.Parser_Format_Message) { message.MessageBuilder = GetMessageBuilder(Target.PlainLines[lineIndex], portionIndex); }
+                    }
                     messages.Add(message);
                 }
 
@@ -64,17 +69,39 @@ namespace ESH.Log.Parser.Engine.Services
                 return new List<Message>();
         }
 
-        private StringBuilder GetMessageBuilder(PlainLine line, out bool isMessageSpanning)
+        private bool? IsCurrentMessageSpanning(int lineIndex, out string[] spanningLines)
+        {
+            spanningLines = null;
+            if (lineIndex >= Target.PlainLines.Count - 1) return null;
+            var nextLine = Target.PlainLines[lineIndex + 1].Line;
+            var firstOpeningIndex = nextLine.IndexOf('[');
+            if (firstOpeningIndex == -1) return null;
+
+            var firstClosingIndex = nextLine.IndexOf(']');
+            if (firstClosingIndex == -1) return null;
+            if (firstOpeningIndex > firstClosingIndex) return null;
+
+            var date = nextLine.Substring(firstOpeningIndex + 1, firstClosingIndex);
+            DateTime datetime = DateTime.MinValue;
+            if (!DateTime.TryParseExact(date, Target.Format.TimeStampFormat, null, System.Globalization.DateTimeStyles.None, out datetime))
+            {
+
+                return false;
+            }
+            return true;
+        }
+         
+        private StringBuilder GetMessageBuilder(PlainLine line, int portionIndex)
         {
             throw new NotImplementedException();
         }
 
-        private DateTime? GetTimeStamp(PlainLine line)
+        private DateTime? GetTimeStamp(PlainLine line, int portionIndex)
         {
             throw new NotImplementedException();
         }
 
-        private LogType GetMessageType(PlainLine line)
+        private LogType GetMessageType(PlainLine line, int portionIndex)
         {
             throw new NotImplementedException();
         }
