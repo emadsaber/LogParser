@@ -19,7 +19,7 @@ namespace ESH.Log.Parser.Engine.Services
     {
         #region properties
         public ParserObject Target { get; set; }
-        
+
         #endregion
 
         #region constructors
@@ -54,10 +54,11 @@ namespace ESH.Log.Parser.Engine.Services
                     message = new Message();
                     for (int portionIndex = 0; portionIndex < portions.Length; portionIndex++)
                     {
-                        isMessageSpanning = IsCurrentMessageSpanning(lineIndex, out string[] spanningLines);
-                        if (portions[portionIndex] == AppResources.Parser_Format_Stamp) { message.TimeStamp = GetTimeStamp(Target.PlainLines[lineIndex], portionIndex); }
-                        if (portions[portionIndex] == AppResources.Parser_Format_Type) { message.Type = GetMessageType(Target.PlainLines[lineIndex], portionIndex); }
-                        if (portions[portionIndex] == AppResources.Parser_Format_Message) { message.MessageBuilder = GetMessageBuilder(Target.PlainLines[lineIndex], portionIndex); }
+                        List<PlainLine> spanningLines = null;
+                        isMessageSpanning = IsCurrentMessageSpanning(lineIndex, out spanningLines) ?? false;
+                        if (portions[portionIndex] == AppResources.Parser_Format_Stamp) { message.TimeStamp = GetTimeStamp(Target.PlainLines[lineIndex]); }
+                        if (portions[portionIndex] == AppResources.Parser_Format_Type) { message.Type = GetMessageType(Target.PlainLines[lineIndex]) ?? LogType.Undefined; }
+                        if (portions[portionIndex] == AppResources.Parser_Format_Message) { message.MessageBuilder = GetMessageBuilder(Target.PlainLines[lineIndex], spanningLines); }
                     }
                     messages.Add(message);
                 }
@@ -66,44 +67,60 @@ namespace ESH.Log.Parser.Engine.Services
                 //TODO: parse spanned messages by adding it to MessageBuilder
 
             }
-                return new List<Message>();
+            return new List<Message>();
         }
 
-        private bool? IsCurrentMessageSpanning(int lineIndex, out string[] spanningLines)
+        private bool? IsCurrentMessageSpanning(int lineIndex, out List<PlainLine> spanningLines)
         {
-            spanningLines = null;
+            spanningLines = new List<PlainLine>();
             if (lineIndex >= Target.PlainLines.Count - 1) return null;
             var nextLine = Target.PlainLines[lineIndex + 1].Line;
-            var firstOpeningIndex = nextLine.IndexOf('[');
-            if (firstOpeningIndex == -1) return null;
+            if(IsLineStartsWithDate(nextLine)) return false;
+            
+            //get spanning lines
+            var index = lineIndex + 2 < Target.PlainLines.Count ? lineIndex + 2 : -1;
+            var stop = false;
 
-            var firstClosingIndex = nextLine.IndexOf(']');
-            if (firstClosingIndex == -1) return null;
-            if (firstOpeningIndex > firstClosingIndex) return null;
-
-            var date = nextLine.Substring(firstOpeningIndex + 1, firstClosingIndex);
-            DateTime datetime = DateTime.MinValue;
-            if (!DateTime.TryParseExact(date, Target.Format.TimeStampFormat, null, System.Globalization.DateTimeStyles.None, out datetime))
+            while (!stop)
             {
+                if (index == -1 || index + 1 >= Target.PlainLines.Count) return null;
+                var line = Target.PlainLines[index];
 
-                return false;
+                var isNextLineANewMesssage = IsLineStartsWithDate(line.Line);
+                if (isNextLineANewMesssage) { index++; stop = false; }
+                else { stop = true; }
+                spanningLines.Add(line);
             }
             return true;
         }
-         
-        private StringBuilder GetMessageBuilder(PlainLine line, int portionIndex)
+        private bool IsLineStartsWithDate(string line)
+        {
+            var dateStamp = new Regex(AppResources.DefaultTimeStampRegexFormat);
+            return dateStamp.IsMatch(line);
+        }
+        private StringBuilder GetMessageBuilder(PlainLine line, List<PlainLine> spanningLines)
         {
             throw new NotImplementedException();
         }
 
-        private DateTime? GetTimeStamp(PlainLine line, int portionIndex)
+        private DateTime? GetTimeStamp(PlainLine line)
         {
-            throw new NotImplementedException();
+            var dateStamp = new Regex(AppResources.DefaultTimeStampRegexFormat);
+            if (!dateStamp.IsMatch(line.Line)) return null;
+            var match = dateStamp.Match(line.Line).Value;
+            DateTime result;
+            if (!DateTime.TryParseExact(match, AppResources.DefaultTimeStampFormat, null, System.Globalization.DateTimeStyles.AssumeLocal, out result)) return null;
+            return result;
         }
 
-        private LogType GetMessageType(PlainLine line, int portionIndex)
+        private LogType? GetMessageType(PlainLine line)
         {
-            throw new NotImplementedException();
+            var match = new Regex(AppResources.DefaultMessageTypeRegexFormat);
+            if (!match.IsMatch(line.Line)) return null;
+            var messageType = match.Match(line.Line).Value;
+            LogType result;
+            if (!Enum.TryParse(messageType, out result)) return null;
+            return result;
         }
         #endregion
     }

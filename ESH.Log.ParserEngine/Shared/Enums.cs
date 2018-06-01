@@ -11,7 +11,8 @@ namespace ESH.Log.Parser.Engine.Shared
         Trace = 0,
         Info = 1,
         Warning = 2,
-        Error = 3
+        Error = 3,
+        Undefined = 4
     }
     public enum FieldType
     {

@@ -61,6 +61,33 @@ namespace ESH.Log.Parser.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (\[Info\])?(\[Error\])?(\[Info\])?(\[Trace\])?.
+        /// </summary>
+        public static string DefaultMessageTypeRegexFormat {
+            get {
+                return ResourceManager.GetString("DefaultMessageTypeRegexFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dd.MM.yyyy HH:mm:ss.
+        /// </summary>
+        public static string DefaultTimeStampFormat {
+            get {
+                return ResourceManager.GetString("DefaultTimeStampFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to \[[0-9][0-9].[0-9][0-9].[0-9][0-9][0-9][0-9]\].
+        /// </summary>
+        public static string DefaultTimeStampRegexFormat {
+            get {
+                return ResourceManager.GetString("DefaultTimeStampRegexFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [Stamp][Type][Message].
         /// </summary>
         public static string Parser_Foramt_DefaultFormat {

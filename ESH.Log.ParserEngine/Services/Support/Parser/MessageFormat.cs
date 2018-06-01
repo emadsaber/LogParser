@@ -11,7 +11,7 @@ namespace ESH.Log.Parser.Engine.Services.Support.Parser
     {
         public string FullFormat { get; set; } = AppResources.Parser_Foramt_DefaultFormat;
         public bool IsIncludingTimeStamp { get; set; }
-        public string TimeStampFormat { get; set; }
+        public string TimeStampFormat { get; set; } = AppResources.DefaultTimeStampFormat;
         public bool IsIncludingType { get; set; }
     }
 }
