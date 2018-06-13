@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Log Parser Queue</title>
+    <style>
+        body {
+            padding: 50px;
+            background-color: burlywood;
+            font-family:Georgia
+        }
+
+        .done {
+            text-decoration: line-through;
+        }
+
+        .pending {
+            font-weight:bolder;
+        }
+
+        .running {
+            background-color: gold;
+        }
+
+        li {
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <h3>Reader</h3>
+    <ol>
+        <li class="done">Reader should be done line by line without the need to read all lines.</li>
+        <li class="done">Reader validations should be done (for target object and filename).</li>
+        <li class="done">Teting Moqs for Reader module.</li>
+    </ol>
+    
+    <h3>Filter</h3>
+    <ol>
+        <li class="done">Filter by selected message types.</li>
+        <li class="done">Filter by selected TimeStamps (for certain days).</li>
+        <li class="done">Filter by TimeStamp range.</li>
+        <li class="done">Filter by criteria in the message.</li>
+        <li class="done">Validations for Filter.</li>
+    </ol>
+    
+    <h3>Parser</h3>
+    <ol>
+        <li class="done">Parser Validations for format and ParserObject.</li>
+        <li class="done">Get Full Format.</li>
+        <li class="done">Detect and parse spanning messages.</li>
+        <li class="running">Write Parser Moqs to unit test the module.</li>
+        <li class="pending">Debugging and enhancing the module.</li>
+    </ol>
+
+    <h3>Writer</h3>
+    <ol>
+        <li class="pending">Implement writer module to allow writing on single file.</li>
+        <li class="pending">Implement writer module to allow writing on multiple files.</li>
+        <li class="pending">Write Validations.</li>
+        <li class="pending">Write Moqs.</li>
+        <li class="pending">Test and destroy.</li>
+    </ol>
+
+    <h3>UI</h3>
+    <ol>
+        <li class="done">Design UI.</li>
+        <li class="pending">Bind UI to modules.</li>
+        <li class="pending">Test and destroy.</li>
+    </ol>
+</body>
+</html>

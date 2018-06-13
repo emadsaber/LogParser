@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ESH.Log.Parser.UI", "LogParser\ESH.Log.Parser.UI.csproj", "{5193546D-77C0-4620-B171-1E3F05582417}"
 EndProject
@@ -16,6 +16,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{CB8CC2A0-255C-4734-9A36-FEDDB286EEAA}"
 	ProjectSection(SolutionItems) = preProject
 		Samples\Readme.txt = Samples\Readme.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{10DD16EA-11B2-49B3-8646-DD08CF8FB30C}"
+	ProjectSection(SolutionItems) = preProject
+		Queue.html = Queue.html
 	EndProjectSection
 EndProject
 Global
@@ -46,5 +51,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C3E20AFE-F277-4E17-B1C1-36E1C66F259F} = {492C8B93-C23E-4464-9EDC-EC67F2D8374A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7E127F54-9BF9-4939-B2C0-5269ADB605DD}
 	EndGlobalSection
 EndGlobal
