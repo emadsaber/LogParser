@@ -42,7 +42,7 @@ namespace ESH.Log.Parser.Engine.Services
             }
 
             var format = Target.Format.FullFormat;
-            var portions = Regex.Matches(format, @"\[[A-Z][a-z]*\]").Cast<string>().ToArray();
+            var portions = Regex.Matches(format, @"\[[A-Z][a-z]*\]").Cast<Match>().Select(x => x.Value).ToArray();
             var message = new Message();
             var messages = new List<Message>();
             bool isMessageSpanning = false;
@@ -67,7 +67,7 @@ namespace ESH.Log.Parser.Engine.Services
                 //TODO: parse spanned messages by adding it to MessageBuilder
 
             }
-            return new List<Message>();
+            return messages;
         }
 
         private bool? IsCurrentMessageSpanning(int lineIndex, out List<PlainLine> spanningLines)
@@ -100,16 +100,48 @@ namespace ESH.Log.Parser.Engine.Services
         }
         private StringBuilder GetMessageBuilder(PlainLine line, List<PlainLine> spanningLines)
         {
-            throw new NotImplementedException();
+            var sb = new StringBuilder();
+            var msgType = GetMessageType(line);
+            var isFirstLineInMessage = msgType != null;
+            var isSingleLineMessage = spanningLines == null;
+
+            if(!isFirstLineInMessage)
+            {
+                if (isSingleLineMessage) return sb.Append(line.Line);
+            }
+            else
+            {
+                if(isSingleLineMessage) return sb.Append(GetMessage(line, msgType.Value));
+                
+                foreach (var item in spanningLines)
+                {
+                    sb.Append(item.Line);
+                }
+                return sb;
+            }
+
+            return sb;
         }
 
+        private string GetMessage(PlainLine line, LogType msgType)
+        {
+            string msgTypeString = $"[{msgType.ToString()}]";
+            var firstMessagCharacterIndex = line.Line.IndexOf(msgTypeString);
+            if (firstMessagCharacterIndex == -1) return null;
+            return line.Line.Substring(firstMessagCharacterIndex);
+        }
+        public string GetSingleLineMessage(PlainLine line)
+        {
+            return GetMessageBuilder(line, null)?.ToString();
+        }
         private DateTime? GetTimeStamp(PlainLine line)
         {
             var dateStamp = new Regex(AppResources.DefaultTimeStampRegexFormat);
             if (!dateStamp.IsMatch(line.Line)) return null;
             var match = dateStamp.Match(line.Line).Value;
             DateTime result;
-            if (!DateTime.TryParseExact(match, AppResources.DefaultTimeStampFormat, null, System.Globalization.DateTimeStyles.AssumeLocal, out result)) return null;
+            //TODO : change substring with more efficient technique
+            if (!DateTime.TryParseExact(match.Substring(1, match.Length-2), AppResources.DefaultTimeStampFormat, null, System.Globalization.DateTimeStyles.AssumeLocal, out result)) return null;
             return result;
         }
 

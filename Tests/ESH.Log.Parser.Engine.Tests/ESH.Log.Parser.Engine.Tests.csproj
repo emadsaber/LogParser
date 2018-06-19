@@ -53,9 +53,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Moqs\FilterMoqs.cs" />
+    <Compile Include="Moqs\ParserMoqs.cs" />
     <Compile Include="Moqs\ReaderMoqs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Filter\FilterTests.cs" />
+    <Compile Include="Services\Parser\ParserTests.cs" />
     <Compile Include="Services\Reader\ReaderTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,9 +70,7 @@
       <Name>ESH.Log.Parser.Engine</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\Parser\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

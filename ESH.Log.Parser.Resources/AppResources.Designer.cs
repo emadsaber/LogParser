@@ -19,7 +19,7 @@ namespace ESH.Log.Parser.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class AppResources {
@@ -61,7 +61,7 @@ namespace ESH.Log.Parser.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (\[Info\])?(\[Error\])?(\[Info\])?(\[Trace\])?.
+        ///   Looks up a localized string similar to (\[Info\])?(\[Error\])?(\[Warning\])?(\[Trace\])?.
         /// </summary>
         public static string DefaultMessageTypeRegexFormat {
             get {
@@ -79,7 +79,7 @@ namespace ESH.Log.Parser.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to \[[0-9][0-9].[0-9][0-9].[0-9][0-9][0-9][0-9]\].
+        ///   Looks up a localized string similar to \[[0-9][0-9].[0-9][0-9].[0-9][0-9][0-9][0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9]\].
         /// </summary>
         public static string DefaultTimeStampRegexFormat {
             get {
